@@ -1,5 +1,8 @@
 package com.samane.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -12,7 +15,7 @@ import hibernateUtil.HibernateUtil;
 public class PhoneBookDao {
 	// 1- Create
 
-		public boolean createUser(PhoneBook ph) {
+		public boolean createPhoneBook(PhoneBook ph) {
 			boolean res = false;
 			Session session = HibernateUtil.openSession();
 			Transaction tx = null;
@@ -58,6 +61,51 @@ public class PhoneBookDao {
 			return p;
 
 		}
+		public boolean updatePhoneBook(PhoneBook p ){
+			boolean res = false;
+			Session session = HibernateUtil.openSession();
+			Transaction tx = null;
+			try {
+				tx = session.getTransaction();
+				tx.begin();
 
+				session.update(p);
+
+				tx.commit();
+				res = true;
+			} catch (Exception ex) {
+
+				tx.rollback();
+
+			} finally {
+				session.close();
+			}
+
+			return res;
+
+		}
+		public boolean deletePhoneBook(PhoneBook p) {
+			boolean res = false;
+			Session session = HibernateUtil.openSession();
+			Transaction tx = null;
+			try {
+				tx = session.getTransaction();
+				tx.begin();
+
+				session.delete(p);
+
+				tx.commit();
+				res = true;
+			} catch (Exception ex) {
+
+				tx.rollback();
+
+			} finally {
+				session.close();
+			}
+
+			return res;
+
+		}
 
 }

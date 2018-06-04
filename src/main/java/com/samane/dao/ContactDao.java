@@ -132,7 +132,7 @@ public class ContactDao {
 		return res;
 
 	}
-	public boolean deleteUser(Contact c) {
+	public boolean deleteContact(Contact c) {
 		boolean res = false;
 		Session session = HibernateUtil.openSession();
 		Transaction tx = null;

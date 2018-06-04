@@ -34,7 +34,7 @@ public class MainExample {
 //	uDao.createUser(u);
 //	Contact x=cdao.getContactById(9);
 //	cdao.deleteUser(x);
-	cdao.deleteContactByName("ali");
+//	cdao.deleteContactByName("ali");
 //	x.setName("mahsa");
 //	cdao.updateContactById(7, "ahmad");
 //cdao.updateContact(x);
@@ -43,6 +43,10 @@ public class MainExample {
 	
 //	pDao.createUser(p);
 //pDao.getPhoneBookById(1).getListContact().stream().map(m-> m.getName()).forEach(System.out::println);
+	PhoneBook pb=pDao.getPhoneBookById(1);
+	pb.setOwnerName("home");
+	pDao.updatePhoneBook(pb);
+	
 	}
 
 }
